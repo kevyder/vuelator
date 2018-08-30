@@ -54,7 +54,9 @@ export default {
         this.current = ''
         this.currentOperator
       }
-      this.current = `${this.current}${number}`
+
+      if ((this.current !== '' || this.current.charAt(0) === '0') || number != 0)
+        this.current = `${this.current}${number}`
     },
     dot(){
       if (this.current.indexOf('.') === -1)
@@ -99,6 +101,10 @@ export default {
 }
 
 .btn{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */  
   border: 1px solid #999;
   cursor: pointer;
   padding: .5rem
