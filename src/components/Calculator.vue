@@ -38,7 +38,13 @@ export default {
       this.current = ''
     },
     sign(){
-      this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
+      if (this.current !== '' && this.current !== '0') {
+        if (this.current.charAt(0) === '-') {
+          this.current = this.current.slice(1)
+        } else {
+          this.current = `-${this.current}`
+        }
+      }
     },
     percent(){
       this.current = `${parseFloat(this.current) / 100}`
@@ -51,9 +57,8 @@ export default {
       this.current = `${this.current}${number}`
     },
     dot(){
-      if (this.current.indexOf('.') === -1) {
+      if (this.current.indexOf('.') === -1)
         this.append('.');
-      }
     },
     setPrevious(){
       this.previous = this.current
